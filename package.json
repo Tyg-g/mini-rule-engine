@@ -4,6 +4,7 @@
   "description": "",
   "keywords": [],
   "main": "src/index.mjs",
+  "type": "module",
   "scripts": {
     "test": "ava"
   },

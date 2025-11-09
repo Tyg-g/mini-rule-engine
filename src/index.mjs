@@ -13,14 +13,14 @@ export class RuleEngine {
   constructor() {
     this.#parameterDefinitions = new ParameterDefinitions();
     this.#parameterIgnoreList = new Set();
-    this.defineParameter('pass', ()=>true);
+    this.defineParameterAccessor('pass', ()=>true);
   }
 
-  defineParameter(parameterName, getterFunction) {
+  defineParameterAccessor(parameterName, getterFunction) {
     if (Array.isArray(parameterName)) {
-      parameterName.forEach( name => this.defineParameter(name, getterFunction) );
+      parameterName.forEach( name => this.defineParameterAccessor(name, getterFunction) );
     } else {
-        this.#parameterDefinitions.defineParameter(parameterName, getterFunction);
+        this.#parameterDefinitions.defineParameterAccessor(parameterName, getterFunction);
     }
   }
 

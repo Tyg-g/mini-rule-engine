@@ -12,6 +12,7 @@ const primitiveOperators = new Map( Object.entries( {
 
 const operatorDispatcher = new Map( Object.entries( {
   'OR':    ()=>ConstraintOr,
+  //TODO: basic array operators
 }));
 
 

@@ -86,20 +86,20 @@ export class ParameterDefinitions {
     this.parameterDefinitions = new Map();
   }
 
-  defineParameter(parameterName, getterFunction) {
-    if (typeof parameterName !== 'string' || parameterName.length==0) {
+  defineParameterAccessor(accessorName, getterFunction) {
+    if (typeof accessorName !== 'string' || accessorName.length==0) {
       throw new REParameterError('defineParameter() expects a string for parameterName');
     }
 
-    if (illegalAccessorNames.has(parameterName)) {
-      throw new REParameterError(`defineParameter() parameter name '${parameterName}' is reserved`);
+    if (illegalAccessorNames.has(accessorName)) {
+      throw new REParameterError(`defineParameter() parameter name '${accessorName}' is reserved`);
     }
 
     if (typeof getterFunction !== 'function') {
       throw new REParameterError('defineParameter() expects a function for getterFunction');
     }
 
-    this.parameterDefinitions.set(parameterName, { getterFunction });
+    this.parameterDefinitions.set(accessorName, { getterFunction });
   }
 
   async #getValueByName(accessorName, getterParameter, meta) {
@@ -131,7 +131,9 @@ export class ParameterDefinitions {
       ]
     );
 
-    return parameterValuePromiseIterator;
+    const parameterValues = new Map( await Promise.all([...parameterValuePromiseIterator]) );
+
+    return parameterValues;
   }
 }
 
