@@ -20,7 +20,7 @@ export class RuleEngine {
     if (Array.isArray(parameterName)) {
       parameterName.forEach( name => this.defineParameterAccessor(name, getterFunction) );
     } else {
-        this.#parameterDefinitions.defineParameterAccessor(parameterName, getterFunction);
+      this.#parameterDefinitions.defineParameterAccessor(parameterName, getterFunction);
     }
   }
 

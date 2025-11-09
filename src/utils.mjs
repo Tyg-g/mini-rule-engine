@@ -147,3 +147,20 @@ export function safeKeyAccess(obj, key) {
 
   return obj?.[key];
 }
+
+
+export function isPlainObject(obj) {
+  if (obj === null || typeof obj !== 'object') return false;
+
+  if (Object.prototype.toString.call(obj) !== '[object Object]') return false;
+
+  const proto = Object.getPrototypeOf(obj);
+
+  if (proto === Object.prototype || proto === null)
+    return true;
+
+  if (typeof proto === 'object' && Object.getPrototypeOf(proto) === Object.prototype)
+    return true;
+
+  return false;
+}

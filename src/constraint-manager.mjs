@@ -1,4 +1,5 @@
 import { RETypeError, RERuleSyntaxError } from './errors.mjs';
+import { isPlainObject } from './utils.mjs';
 
 
 const primitiveOperators = new Map( Object.entries( {
@@ -18,7 +19,7 @@ const operatorDispatcher = new Map( Object.entries( {
 
 export class ConstraintList {
   constructor(constraintsObj) {
-    if (typeof constraintsObj !== 'object' || constraintsObj == null) {
+    if (!isPlainObject(constraintsObj)) {
       throw new RERuleSyntaxError(`Constraints object expected, instead got '${typeof constraintsObj}':\n${JSON.stringify(constraintsObj,null,2)}`);
     }
 
@@ -64,10 +65,12 @@ export class Constraint {
 class ConstraintPrimitive extends Constraint {
   constructor(operator, limitValue) {
     super(operator, limitValue)
-    this.operatorFn = primitiveOperators.get(operator);
 
-    if (!this.operatorFn)
+    if (primitiveOperators.has(operator))
+      this.operatorFn = primitiveOperators.get(operator);
+    else {
       throw new RERuleSyntaxError(`Invalid constraint operator: ${operator} (${JSON.stringify(operator)})`);
+    }
 
     if (!this.#isPrimitive(limitValue))
       throw new RERuleSyntaxError(`Operator '${operator}' expects a primitive, but got '${typeof limitValue}':\n${JSON.stringify(limitValue)}`);
