@@ -127,10 +127,7 @@ export class ParameterDefinitions {
     const parameterValuePromiseIterator = parameterMetaIterator.map(
       async (meta) => [
           meta.accessorName,
-          await this.#getValueByName(meta.accessorName, getterParameter, meta).then((value) => {
-            console.log(`Received '${meta.accessorName}':`, value);
-            return value;
-          })
+          await this.#getValueByName(meta.accessorName, getterParameter, meta)
       ]
     );
 

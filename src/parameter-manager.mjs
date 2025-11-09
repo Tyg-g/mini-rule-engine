@@ -80,7 +80,7 @@ class ParameterObjectSingle {
     ) {
       throw new RERuleSyntaxError(`Parameter '${this.parameterAccessor}' in '${this.parameterName}' expects an object, instead got '${typeof parameterValue}'\n${JSON.stringify(parameterValue)}`);
     }
-    console.log(parameterValue);
+
     for (const key of this.objectPath) {
       parameterValue = safeKeyAccess(parameterValue, key);
     }
