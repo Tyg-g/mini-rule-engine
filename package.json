@@ -1,0 +1,21 @@
+{
+  "name": "mini-rule-engine",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.mjs",
+  "scripts": {
+    "test": "ava"
+  },
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "author": "Gabriel Cséfalvay",
+  "license": "LGPL-3.0",
+  "dependencies": {
+    "@github/multimap": "^1.0.0"
+  },
+  "devDependencies": {
+    "ava": "^6.4.1"
+  }
+}

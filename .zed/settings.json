@@ -1,0 +1,19 @@
+// Folder-specific settings
+//
+// For a full list of overridable settings, and general information on folder-specific settings,
+// see the documentation: https://zed.dev/docs/configuring-zed#settings-files
+{
+  "format_on_save": "off",
+  "tab_size": 2,
+  "remove_trailing_whitespace_on_save": true,
+  "soft_wrap": "editor_width",
+  "use_on_type_format": true,
+  "hard_tabs": false,
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": false,
+    "show_parameter_hints": false,
+    "show_other_hints": false,
+    "show_background": false
+  }
+}
