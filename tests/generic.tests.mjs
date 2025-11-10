@@ -58,6 +58,35 @@ test('pass-basic-conditions', async t => {
 });
 
 
+test('pass-failing-evaluation', async t => {
+  // defineParameterAccessor(accessorName, getterFunction)
+  const rulesets = [
+    { v1: { under: 1 } },
+    { v1: { over: 1 } },
+    { v1: { max: 0 } },
+    { v1: { min: 2 } },
+    { v1: { 'OR': [{ is: 2 }, { not: 1 }]}},
+    { 'OR': [
+      { v1: { under: 1 } },
+      { v1: { over: 1 } },
+    ]},
+  ];
+
+  const promises = rulesets.map(async (ruleset) => [ruleset, await t.context.re.evaluateWithReason(ruleset)]);
+
+  const resultTuples = await Promise.all(promises);
+
+  const expectedResult = {
+    value: false,
+    parameterName: 'v1'
+  };
+
+  resultTuples.forEach(([ruleset, result]) => {
+    t.like(result, expectedResult, `Did not fail for ruleset: ${JSON.stringify(ruleset)}`);
+  });
+});
+
+
 test('pass-deep-nesting', async t => {
 
   const ruleset = {
