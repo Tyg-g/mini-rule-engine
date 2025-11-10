@@ -1,5 +1,5 @@
 import { ConstraintList } from './constraint-manager.mjs';
-import { EvalResult, ParameterDataCollector, safeKeyAccess } from './utils.mjs';
+import { EvalResult, ParameterDataCollector, safeKeyAccess, isPlainObject } from './utils.mjs';
 import { RERuleSyntaxError } from './errors.mjs';
 
 
@@ -8,9 +8,9 @@ export const illegalAccessorNames = new Set(['or', 'and', 'OR', 'AND']);
 
 export class ParameterListObject {
   constructor(obj, parameterIgnoreList) {
-    if (typeof obj !== 'object' || obj === null)
+    if (!isPlainObject(obj)) {
       throw new RERuleSyntaxError(`An object with parameter definitions is expected. Instead got '${typeof obj}':\n${JSON.stringify(obj)}`);
-
+    }
     const list = Object.entries(obj);
 
     this.parameters = list
@@ -26,7 +26,7 @@ export class ParameterListObject {
   evaluate(parameterValues) {
     for (const parameterObject of this.parameters) {
       let evalResult = parameterObject.evaluate(parameterValues);
-      if (evalResult == false)
+      if (evalResult.value === false)
         return evalResult;
     }
 
@@ -48,9 +48,6 @@ export class ParameterListObject {
 
 class ParameterObject {
   constructor(parameterName, constraintObj, parameterIgnoreList) {
-    if (!parameterName)
-      return null;
-
     if (parameterName === 'OR')
       return new ParameterObjectOr(parameterName, constraintObj, parameterIgnoreList);
     else
@@ -61,8 +58,9 @@ class ParameterObject {
 
 class ParameterObjectSingle {
   constructor(parameterName, constraintObj, _) {
-    if (typeof constraintObj !== 'object' || constraintObj === null)
+    if (typeof constraintObj !== 'object' || constraintObj === null) {
       throw new RERuleSyntaxError(`Parameter '${parameterName}' expects an object with constraint definitions`);
+    }
 
     const deconstructed = parameterName.split('.');
 
@@ -75,14 +73,16 @@ class ParameterObjectSingle {
   evaluate(parameterValues) {
     let parameterValue = parameterValues.get(this.parameterAccessor);
 
-    if (this.objectPath.length > 0 &&
-       ( typeof parameterValue !== 'object' || parameterValue === null )
-    ) {
-      throw new RERuleSyntaxError(`Parameter '${this.parameterAccessor}' in '${this.parameterName}' expects an object, instead got '${typeof parameterValue}'\n${JSON.stringify(parameterValue)}`);
-    }
+    let consumedKey = '';
 
     for (const key of this.objectPath) {
+      consumedKey += '.' + key;
       parameterValue = safeKeyAccess(parameterValue, key);
+
+      if (parameterValue === undefined) {
+        const errPath = this.parameterAccessor + consumedKey;
+        throw new RERuleSyntaxError(`Parameter '${errPath}' doesn't exist in '${this.parameterAccessor}'`);
+      }
     }
 
     const boolResult = this.constraintList.evaluate(parameterValue);
@@ -105,8 +105,9 @@ class ParameterObjectSingle {
 
 class ParameterObjectOr {
   constructor(_, parametersObjects, parameterIgnoreList) {
-    if (!Array.isArray(parametersObjects))
+    if (!Array.isArray(parametersObjects)) {
       throw new RERuleSyntaxError(`Operator 'OR' expects an Array, but got '${typeof parametersObjects}':\n${JSON.stringify(parametersObjects)}`);
+    }
 
     this.parameterLists = parametersObjects.map(
       pO => new ParameterListObject(pO, parameterIgnoreList)
@@ -118,14 +119,15 @@ class ParameterObjectOr {
 
     for (const parameterList of this.parameterLists) {
       const evalResult = parameterList.evaluate(parameterValues);
-      if (evalResult == true)
+      if (evalResult.value === true) {
         return evalResult;
-      else
+      }
+      else {
         falseEvalResult = evalResult;
+      }
     }
 
     return falseEvalResult;
-
   }
 
   collectParameterData(dataCollector) {

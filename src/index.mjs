@@ -26,7 +26,7 @@ export class RuleEngine {
 
   ignoreParameter(parameterName) {
     if (illegalAccessorNames.has(parameterName))
-      throw new REParameterError(`defineParameter(): Illegal parameter name: '${parameterName}'`);
+      throw new REParameterError(`ignoreParameter(): Illegal parameter name: '${parameterName}'`);
     else
       this.#parameterIgnoreList.add(parameterName);
   }

@@ -82,7 +82,7 @@ class ConstraintPrimitive extends Constraint {
 
   evaluate(value) {
     if (!this.#isPrimitive(value))
-      throw new RETypeError(`Operator '${this.operator}' expects a primitive input value, but got '${typeof value}':\n${JSON.stringify(value)}`);
+      throw new RETypeError(`Operator '${this.operator}' cannot be used on an '${typeof value}'.\nThe left expression should evaluate to a primitive,\ninstead got: ${JSON.stringify(value)}`);
 
     return this.operatorFn(value, this.limitValue);
   }

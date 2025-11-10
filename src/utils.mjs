@@ -11,10 +11,7 @@ export class EvalResult {
   }
 
   [Symbol.toPrimitive](hint) {
-    if (hint === 'string')
-      return this.toString();
-    else
-      return this.value;
+    return this.toString();
   }
 
   toString() {
@@ -65,10 +62,6 @@ export class ParameterDataCollector {
     });
     const items = Array.from(iterator);
     return items.values();
-  }
-
-  getConstraintsArrayfor(parameterName) {
-    return Array.from(this.parameterConstraints.get(parameterName));
   }
 }
 

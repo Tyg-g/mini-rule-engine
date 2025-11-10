@@ -2,6 +2,7 @@ import { RuleEngine } from '../src/index.mjs';
 
 
 const defaultData = {
+  v0: 0,
   v1: 1,
   v2: 2,
   v3: 3,
@@ -12,6 +13,7 @@ const defaultData = {
     o: { v1: 1 }
   },
   s: 'string',
+  n: null,
 };
 
 
