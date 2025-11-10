@@ -10,7 +10,8 @@ const defaultData = {
     v1: 1,
     v2: 2,
     v3: 3,
-    o: { v1: 1 }
+    o: { v1: 1 },
+    fn: () => ''
   },
   s: 'string',
   n: null,

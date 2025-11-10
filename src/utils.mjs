@@ -138,7 +138,12 @@ export function safeKeyAccess(obj, key) {
   if (!Object.hasOwn(obj, key))
     return undefined;
 
-  return obj?.[key];
+  const v = obj?.[key];
+
+  if (typeof v === 'function')
+    return undefined;
+
+  return v;
 }
 
 

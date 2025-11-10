@@ -275,3 +275,19 @@ test('pass-secondary-object-type', async t => {
 
   t.is(resultObj.value, true, `Should pass`);
 });
+
+
+test('error-object-function-access', async t => {
+
+  const ruleset = {
+    'o.fn': { not: null }
+  };
+
+  const f = async () => await t.context.re.evaluateWithReason(ruleset);
+
+  const expect = {
+    name: 'RERuleSyntaxError'
+  }
+
+  await t.throwsAsync(f, expect);
+});
