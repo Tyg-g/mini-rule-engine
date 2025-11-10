@@ -5,8 +5,9 @@
   "keywords": [],
   "main": "src/index.mjs",
   "type": "module",
+  "sideEffects": false,
   "scripts": {
-    "test": "node report.mjs c8 ava"
+    "test": "node tests/_test-report.mjs c8 ava"
   },
   "exports": {
     ".": "./src/index.mjs"
@@ -19,6 +20,11 @@
   "devDependencies": {
     "ava": "^6.4.1",
     "c8": "^10.1.3",
+    "delay": "^7.0.0",
     "kleur": "^4.1.5"
+  },
+  "c8": {
+    "check-coverage": true,
+    "100": true
   }
 }
