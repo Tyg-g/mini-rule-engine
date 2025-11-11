@@ -27,6 +27,9 @@ jobs:
       - run: echo Commit ${{ github.event.workflow_run.head_commit.id }}
       - run: echo Tree ${{ github.event.workflow_run.head_commit.tree_id }}
 
+      - name: NPM latest
+        run: npm install -g npm@latest
+
       - run: npm ci
 
       - name: Check NPM repo
