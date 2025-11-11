@@ -1,7 +1,8 @@
-![package version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FTyg-g%2Fmini-rule-engine%2Fmain%2Fpackage.json&query=%24.version&label=npm&color=0F8CD4)
-[![license](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FTyg-g%2Fmini-rule-engine%2Fmain%2Fpackage.json&query=%24.license&label=license&color=72DB39)](https://opensource.org/licenses?ls=mpl)
-![test coverage of the code](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FTyg-g%2Fmini-rule-engine%2Fmain%2Fpackage.json&query=%24.c8.lines&label=coverage&suffix=%25&color=5697C7)
-![](https://img.shields.io/badge/tree--shakeable-yes-blue)
+![package version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Funpkg.com%2Fmini-rule-engine%40latest%2Fpackage.json&query=%24.version&label=npm&color=0F8CD4)
+[![license](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Funpkg.com%2Fmini-rule-engine%40latest%2Fpackage.json&query=%24.license&label=license&color=72DB39)](https://opensource.org/licenses?ls=mpl)
+![test coverage of the code](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Funpkg.com%2Fmini-rule-engine%40latest%2Fpackage.json&query=%24.c8.lines&label=coverage&suffix=%25&color=5697C7)
+![tree-shakeable: yes](https://img.shields.io/badge/tree--shakeable-yes-blue)
+![bundle size: 2KiB](https://img.shields.io/bundlephobia/minzip/mini-rule-engine)
 ![ECMAscript2024](https://shields.io/badge/ES2024-F5E34C?logo=JavaScript&logoColor=000)
 
 ![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Tyg-g_mini-rule-engine&metric=alert_status)
