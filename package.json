@@ -1,6 +1,6 @@
 {
   "name": "mini-rule-engine",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A lightweight, async-first rule engine for Node.js with simple, human-readable rules.",
   "repository": {
       "type": "git",
@@ -23,7 +23,8 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "test": "node tests/_test-report.mjs c8 ava"
+    "test": "node tests/_test-report.mjs c8 ava",
+    "push-release": "bash scripts/tag-release.sh"
   },
   "exports": {
     ".": "./src/index.mjs"

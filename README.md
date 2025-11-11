@@ -1,8 +1,8 @@
 ![package version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FTyg-g%2Fmini-rule-engine%2Fmain%2Fpackage.json&query=%24.version&label=npm&color=0F8CD4)
-![](https://shields.io/badge/ES2024-F5E34C?logo=JavaScript&logoColor=000)
 [![license](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FTyg-g%2Fmini-rule-engine%2Fmain%2Fpackage.json&query=%24.license&label=license&color=72DB39)](https://opensource.org/licenses?ls=mpl)
 ![test coverage of the code](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FTyg-g%2Fmini-rule-engine%2Fmain%2Fpackage.json&query=%24.c8.lines&label=coverage&suffix=%25&color=5697C7)
 ![](https://img.shields.io/badge/tree--shakeable-yes-blue)
+![ECMAscript2024](https://shields.io/badge/ES2024-F5E34C?logo=JavaScript&logoColor=000)
 
 ![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Tyg-g_mini-rule-engine&metric=alert_status)
 ![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Tyg-g_mini-rule-engine&metric=security_rating)
@@ -15,6 +15,8 @@
 # Mini Rule Engine
 
 This is a very lightweight rule engine for Node.js that evaluates simple, human-readable rules defined in standard JavaScript objects - with async DB operations in mind.
+
+> This is a new module that I just created. If you are interesed in using the package or you have an idea for a new feature, contact me on the GitHub page.
 
 Basic Philosophy:
 1. 🧩 Keep rule definitions simple and intuitive.
