@@ -1,5 +1,5 @@
 
-name: Automatic GitHub Release Script
+name: Automatic GitHub Release
 
 on:
   push:
