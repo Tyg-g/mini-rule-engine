@@ -2,6 +2,14 @@
   "name": "mini-rule-engine",
   "version": "0.0.1",
   "description": "A lightweight, async-first rule engine for Node.js with simple, human-readable rules.",
+  "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Tyg-g/mini-rule-engine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tyg-g/mini-rule-engine/issues/new/choose"
+  },
+  "homepage": "https://github.com/Tyg-g/mini-rule-engine#readme",
   "keywords": [
       "json-rules",
       "rule-engine",
