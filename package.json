@@ -1,8 +1,16 @@
 {
   "name": "mini-rule-engine",
   "version": "0.0.1",
-  "description": "",
-  "keywords": [],
+  "description": "A lightweight, async-first rule engine for Node.js with simple, human-readable rules.",
+  "keywords": [
+      "json-rules",
+      "rule-engine",
+      "rules",
+      "business-rules",
+      "async",
+      "json",
+      "logic-engine"
+  ],
   "main": "src/index.mjs",
   "type": "module",
   "sideEffects": false,
@@ -13,7 +21,7 @@
     ".": "./src/index.mjs"
   },
   "author": "Gabriel Cséfalvay",
-  "license": "LGPL-3.0",
+  "license": "MPL-2.0",
   "dependencies": {
     "@github/multimap": "^1.0.0"
   },
@@ -25,6 +33,9 @@
   },
   "c8": {
     "check-coverage": true,
-    "100": true
+    "lines": 100,
+    "functions": 100,
+    "branches": 100,
+    "statements": 100
   }
 }
