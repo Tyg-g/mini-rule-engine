@@ -4,12 +4,12 @@
 ![tree-shakeable: yes](https://img.shields.io/badge/tree--shakeable-yes-blue)
 ![bundle size: 2KiB](https://img.shields.io/bundlephobia/minzip/mini-rule-engine)
 ![ECMAscript2024](https://shields.io/badge/ES2024-F5E34C?logo=JavaScript&logoColor=000)
-
+<br>
 ![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Tyg-g_mini-rule-engine&metric=alert_status)
 ![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Tyg-g_mini-rule-engine&metric=security_rating)
 ![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Tyg-g_mini-rule-engine&metric=reliability_rating)
 ![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Tyg-g_mini-rule-engine&metric=sqale_rating)
-
+<br>
 [![Post a Feature Reuquest](https://img.shields.io/badge/Feature_Requests_Welcome_%E2%9E%9C-D19B00)](https://github.com/Tyg-g/mini-rule-engine/issues/new/choose)
 
 
@@ -181,7 +181,6 @@ Note: Comparing different primitive values (e.g. number and string) will not thr
 
 ## ![](https://cdn.jsdelivr.net/npm/@tabler/icons/icons/bug.svg) Issues / New Features ![](https://cdn.jsdelivr.net/npm/@tabler/icons/icons/timeline-event-plus.svg)
 
-<img height="18" src="https://cdn.jsdelivr.net/npm/@tabler/icons/icons/texture.svg" />
-Go to [**Issue Reporting on mini-rule-engine**](https://github.com/Tyg-g/mini-rule-engine/issues/new/choose)
+<img height="16" src="https://cdn.jsdelivr.net/npm/@tabler/icons/icons/texture.svg"> Go to [**Issue Reporting on mini-rule-engine ➜**](https://github.com/Tyg-g/mini-rule-engine/issues/new/choose)
 
-*All contributions, ideas and encouragements are welcome!*
+> *All contributions, ideas and encouragements are welcome!*
