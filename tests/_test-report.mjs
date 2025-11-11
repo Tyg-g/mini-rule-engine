@@ -3,17 +3,6 @@ import { stdout, stderr, argv } from "node:process";
 import kleur from 'kleur';
 
 
-const A = {
-  reset: "\x1b[0m",
-  bold: "\x1b[1m",
-  red: "\x1b[91m",
-  yellow: "\x1b[93m",
-  green: "\x1b[92m",
-  white: "\x1b[37m",
-};
-
-
-
 const stripAnsi = (s) => s.replace(/\x1b\[[0-9;]*m/g, "");
 const isSeparator = (line) => /^-+(\|-+)+-+$/.test(line.trim());
 const isHeader = (line) => {
@@ -49,10 +38,8 @@ function processLine(originalLine) {
 
   const scores = [100, 0, 0, 0, 0, 0];
 
-  let worstScore = Infinity;
-
   for (const i of [1, 2, 3, 4]) {
-    const thisScore = parseFloat(parts[i].trim());
+    const thisScore = Number.parseFloat(parts[i].trim());
     scores[i] = thisScore;
     if (!Number.isFinite(thisScore)) continue;
     scores[0] = Math.min(scores[0], thisScore);

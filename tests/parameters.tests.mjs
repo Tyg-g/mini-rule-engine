@@ -27,7 +27,7 @@ test('error-param-object-key-undefined', async t => {
 
   await Promise.all([
     t.throwsAsync(p1, expect),
-    t.throwsAsync(p1, expect),
+    t.throwsAsync(p2, expect),
   ]);
 
 });
