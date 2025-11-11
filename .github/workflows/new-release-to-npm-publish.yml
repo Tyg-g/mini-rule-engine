@@ -1,0 +1,35 @@
+
+name: Automatic NPM Publish Script
+
+on:
+  release:
+    types: [published]
+
+permissions:
+      contents: read
+      id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - run: npm ci
+
+      - name: Check NPM repo
+        run: npm view $(node -p "require('./package.json').name") name version
+
+      - name: Run Tests
+        run: npm test
+
+      - name: NPM Dry Run
+        run: npm publish --dry-run --provenance
+
+      - name: Publish to NPM
+        id: npm_publish
+        run: npm publish --provenance

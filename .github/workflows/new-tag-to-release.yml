@@ -1,5 +1,5 @@
 
-name: Automatic Release Script
+name: Automatic GitHub Release Script
 
 on:
   push:
@@ -8,31 +8,21 @@ on:
 
 permissions:
       contents: write
-      id-token: write
 
 jobs:
   publish:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
         with:
-          node-version: '22'
-          registry-url: 'https://registry.npmjs.org/'
+          node-version: 22
 
-      - run: npm i -g npm@latest
       - run: npm ci
-
-      - name: Check NPM repo
-        run: npm view $(node -p "require('./package.json').name") name version
 
       - name: Run Tests
         run: npm test
-
-      - name: NPM Dry Run
-        run: npm publish --dry-run --provenance
 
       - name: Create GitHub Release
         id: create_release
@@ -44,7 +34,3 @@ jobs:
           release_name: Release ${{ github.ref_name }}
           draft: false
           prerelease: false
-
-      - name: Publish to NPM
-        id: npm_publish
-        run: npm publish --provenance
