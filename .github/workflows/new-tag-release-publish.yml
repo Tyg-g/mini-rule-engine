@@ -24,8 +24,14 @@ jobs:
 
       - run: npm ci
 
+      - name: Check NPM repo
+        run: npm view $(node -p "require('./package.json').name") name version
+
       - name: Run Tests
         run: npm test
+
+      - name: NPM Dry Run
+        run: npm publish --dry-run --provenance
 
       - name: Create GitHub Release
         id: create_release
