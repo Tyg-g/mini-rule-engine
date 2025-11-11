@@ -1,5 +1,6 @@
 .zed/
 .git/
+.github/
 .gitignore
 node_modules/
 tests/
