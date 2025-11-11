@@ -1,0 +1,31 @@
+name: Greet Newcomers
+
+on:
+  pull_request:
+    types:
+      - opened
+  issues:
+    types:
+      - opened
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  greeting:
+    name: Greet First-Time Contributors
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/first-interaction@v3
+        with:
+          issue_message: |
+            Thank you for your first contribution. I'll review your
+            report and will answer shortly. Feel free to open more
+            issues if you have more information to share. ;)
+
+            This is the message that will be displayed!
+          pr_message: |
+            Thank you for your first PR. I'll review your code
+            suggestions and will answer shortly.
