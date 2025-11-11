@@ -23,7 +23,7 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "test": "node tests/_test-report.mjs c8 ava",
+    "test": "node scripts/tst-report.mjs c8 ava",
     "push-release": "bash scripts/tag-release.sh"
   },
   "exports": {
@@ -45,6 +45,7 @@
     "lines": 100,
     "functions": 100,
     "branches": 100,
-    "statements": 100
+    "statements": 100,
+    "include": ["src"]
   }
 }

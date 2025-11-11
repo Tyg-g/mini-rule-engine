@@ -70,7 +70,7 @@ function createProcessor(write) {
         write(processLine(buf));
         write('\n');
       }
-      write(A.reset);
+      write(kleur.reset(''));
     },
   };
 }
@@ -83,7 +83,7 @@ function runWithCommand(cmd) {
   child.stdout.on("end", () => proc.finish());
   child.stderr.on("data", (d) => stderr.write(d)); // passthrough
   child.on("close", (code, signal) => {
-    stdout.write(A.reset + '\n');
+    stdout.write(kleur.reset('\n'));
     if (signal) process.kill(process.pid, signal);
     else process.exit(code ?? 0);
   });
