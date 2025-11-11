@@ -50,6 +50,7 @@ re.defineParameterAccessor('user', async () => ({
   country: 'Mars Colony',
   isPremium: true,
 }));
+
 re.defineParameterAccessor('orderCount', async () => 4);
 ```
 **2. Use the engine instance**
@@ -68,11 +69,13 @@ const myRuleset = {
   ]
 };
 
+
 // Evaluate the rule
 
 const result = await re.evaluate(myRuleset);
 
 console.log(`Does this user meet our criteria? ${result}`); // true
+
 
 // You can also get a reason for failure
 
