@@ -1,6 +1,6 @@
 {
   "name": "mini-rule-engine",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight, async-first rule engine for Node.js with simple, human-readable rules.",
   "repository": {
       "type": "git",
