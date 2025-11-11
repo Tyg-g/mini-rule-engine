@@ -42,7 +42,12 @@ import RuleEngine from 'mini-rule-engine';
 // The getter function can be async (eg. read from a DB)
 
 const re = new RuleEngine();
-re.defineParameterAccessor('user', async () => {age: 25, country: 'Mars Colony'}, isPremium: true);
+
+re.defineParameterAccessor('user', async () => ({
+  age: 25,
+  country: 'Mars Colony',
+  isPremium: true,
+}));
 re.defineParameterAccessor('orderCount', async () => 4);
 
 // 2. Use the engine instance
@@ -52,10 +57,10 @@ re.defineParameterAccessor('orderCount', async () => 4);
 
 const myRuleset = {
   'user.age': { min: 18 },
-  'user.country': { is: 'Mars Colony' }
+  'user.country': { is: 'Mars Colony' },
   OR: [
-    {'user.isPremium': { is: true } }
-    {'orderCount': { max: 0 } }
+    {'user.isPremium': { is: true } },
+    {'orderCount': { max: 0 } },
   ]
 };
 
