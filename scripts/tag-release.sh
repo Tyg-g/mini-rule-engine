@@ -53,6 +53,8 @@ if ! [[ "$VERSION" =~ ^[0-9]+(\.[0-9]+){2}(-[0-9A-Za-z\.-]+)?$ ]]; then
   exit 1
 fi
 
+echo "✔ Target version: '$VERSION'"
+
 # 2) Validate first CHANGELOG heading -----------------------------------------
 
 if [[ ! -f "$CHANGELOG" ]]; then
