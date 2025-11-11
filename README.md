@@ -9,7 +9,7 @@
 ![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Tyg-g_mini-rule-engine&metric=reliability_rating)
 ![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Tyg-g_mini-rule-engine&metric=sqale_rating)
 
-[![Post a Feature Reuquest](https://img.shields.io/badge/Feature_Requests_Welcome_%3e-D19B00)](https://github.com/Tyg-g/mini-rule-engine/issues/new/choose)
+[![Post a Feature Reuquest](https://img.shields.io/badge/Feature_Requests_Welcome_%E2%9E%9C-D19B00)](https://github.com/Tyg-g/mini-rule-engine/issues/new/choose)
 
 
 # Mini Rule Engine
