@@ -36,10 +36,9 @@ $ npm i mini-rule-engine
 
 Here's a quick example of how to define parameters, create a rule, and evaluate it.
 
+**1. Create a new engine instance, and define the data sources**
 ```javascript
 import RuleEngine from 'mini-rule-engine';
-
-// 1. Create a new engine instance, and define the data sources
 
 // A parameter is a piece of data that the engine can check.
 // The getter function can be async (eg. read from a DB)
@@ -52,10 +51,12 @@ re.defineParameterAccessor('user', async () => ({
   isPremium: true,
 }));
 re.defineParameterAccessor('orderCount', async () => 4);
+```
+**2. Use the engine instance**
 
-// 2. Use the engine instance
-
-// The rule object can be static, or can be read from a DB
+```javascript
+// The ruleset object can be static,
+// or can be read from a DB
 // (eg. voucher code, dynamic configuration, etc.)
 
 const myRuleset = {
