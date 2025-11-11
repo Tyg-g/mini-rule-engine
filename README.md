@@ -26,13 +26,13 @@ Basic Philosophy:
 
 I welcome feature requests and suggestions for use cases I might not have considered. The goal is to keep the rule definitions simple and intuitive while adding powerful features.
 
-## Installation
+## 0. Installation
 
 ```sh
 npm i mini-rule-engine
 ```
 
-## Basic Usage
+## 1. Basic Usage
 
 Here's a quick example of how to define parameters, create a rule, and evaluate it.
 
@@ -84,7 +84,7 @@ if (!detailedResult.value) {
 }
 ```
 
-## Rule Operators
+## 2. Rule Operators
 
 ### Basic Operators
 
@@ -130,7 +130,7 @@ Note: The `'OR'` operator in both cases expects an array of objects.
 The logical AND operation is implied when listing different rules in the ruleset. Therefore, no AND operatoror is defined.
 
 
-## Parameter Usage
+## 3. Parameter Usage
 
 ### Data Types
 
@@ -152,7 +152,7 @@ const ruleset = {
 ```
 
 
-## Async
+## 4. Async
 
 The evaluation is always async. If the getter functions in defineParameterAccessor() are async, the evaluation will resolve immediately.
 
@@ -163,7 +163,7 @@ For each evaluation:
 - Each getter function is called only once, regardless of how many times it is referenced in the ruleset. The same value will be reused for each rule.
 
 
-## Errors
+## 5. Errors
 
 ### Parameter definition errors
 
@@ -179,7 +179,7 @@ The evaluation only throws, if it cannot be completed with a meaningful result.
 
 Note: Comparing different primitive values (e.g. number and string) will not throw, it will simply return false.
 
-## ![](https://cdn.jsdelivr.net/npm/@tabler/icons/icons/bug.svg) Issues / New Features ![](https://cdn.jsdelivr.net/npm/@tabler/icons/icons/timeline-event-plus.svg)
+## 6. ![](https://cdn.jsdelivr.net/npm/@tabler/icons/icons/bug.svg) Issues / New Features ![](https://cdn.jsdelivr.net/npm/@tabler/icons/icons/timeline-event-plus.svg)
 
 <img height="16" src="https://cdn.jsdelivr.net/npm/@tabler/icons/icons/texture.svg"> Go to [**Issue Reporting on mini-rule-engine ➜**](https://github.com/Tyg-g/mini-rule-engine/issues/new/choose)
 
