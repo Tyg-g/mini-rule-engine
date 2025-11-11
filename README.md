@@ -1,11 +1,18 @@
+![package version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FTyg-g%2Fmini-rule-engine%2Fmain%2Fpackage.json&query=%24.version&label=npm&color=0F8CD4)
+[![license](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FTyg-g%2Fmini-rule-engine%2Fmain%2Fpackage.json&query=%24.license&label=license&color=72DB39)](https://opensource.org/licenses?ls=mpl)
+![test coverage of the code](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FTyg-g%2Fmini-rule-engine%2Fmain%2Fpackage.json&query=%24.c8.lines&label=coverage&suffix=%25&color=5697C7)
+
+[![Post a Feature Reuquest](https://img.shields.io/badge/Feature_Requests_Welcome_%3e-D19B00)](https://github.com/Tyg-g/mini-rule-engine/issues/new/choose)
+
+
 # Mini Rule Engine
 
 This is a very lightweight rule engine for Node.js that evaluates simple, human-readable rules defined in standard JavaScript objects - with async DB operations in mind.
 
 Basic Philosophy:
-1. Keep rule definitions simple and intuitive.
-2. Make it straightforward to connect to async/DB operations.
-3. Add features without sacrificing simplicity and readibility.
+1. 🧩 Keep rule definitions simple and intuitive.
+2. ⚡ Make it straightforward to connect to async/DB operations.
+3. ✨ Add features without sacrificing simplicity and readibility.
 
 I welcome feature requests and suggestions for use cases I might not have considered. The goal is to keep the rule definitions simple and intuitive while adding powerful features.
 
@@ -101,7 +108,7 @@ const ruleset = {
 };
 ```
 
-The `'OR'` operator inboth cases expects an array of objects.
+Note: The `'OR'` operator in both cases expects an array of objects.
 
 ### Logical AND Operator
 
@@ -143,9 +150,9 @@ For each evaluation:
 
 ## Errors
 
-### Parameter definition errors `'REParameterError'`
+### Parameter definition errors
 
-If the parameter definition encounters a mistake/error in its inputs, it throws.
+- `'REParameterError'`: If the parameter definition encounters a mistake/error in its inputs, it throws.
 
 ### Evaluation Errors
 
@@ -155,4 +162,4 @@ The evaluation only throws, if it cannot be completed with a meaningful result.
 
 - `'RETypeError'`: This error is thrown, if a parameter is evaluated to a data type, that cannot be accepted.
 
-Note that comparing different primitive values (e.g. number and string) will not throw, it will simply return false.
+Note: Comparing different primitive values (e.g. number and string) will not throw, it will simply return false.
