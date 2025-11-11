@@ -108,12 +108,12 @@ if git ls-remote --tags origin "refs/tags/${TAG}" | grep -q .; then
   exit 1
 fi
 
-#git tag -a "${TAG}" -m "Release ${TAG}"
+git tag -a "${TAG}" -m "Release ${TAG}"
 echo "✔ Created tag ${TAG}"
 
 # 4) Push the tag --------------------------------------------------------------
 
-#git push origin "${TAG}"
+git push origin "${TAG}"
 echo "✔ Pushed tag ${TAG} to origin"
 
 echo "✅ Done."
