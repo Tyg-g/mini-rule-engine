@@ -1,6 +1,13 @@
 ![package version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FTyg-g%2Fmini-rule-engine%2Fmain%2Fpackage.json&query=%24.version&label=npm&color=0F8CD4)
 [![license](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FTyg-g%2Fmini-rule-engine%2Fmain%2Fpackage.json&query=%24.license&label=license&color=72DB39)](https://opensource.org/licenses?ls=mpl)
 ![test coverage of the code](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FTyg-g%2Fmini-rule-engine%2Fmain%2Fpackage.json&query=%24.c8.lines&label=coverage&suffix=%25&color=5697C7)
+![](https://img.shields.io/badge/tree--shakeable-yes-blue)
+![](https://shields.io/badge/ES2024-F5E34C?logo=JavaScript&logoColor=000)
+
+![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Tyg-g_mini-rule-engine&metric=alert_status)
+![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Tyg-g_mini-rule-engine&metric=security_rating)
+![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Tyg-g_mini-rule-engine&metric=reliability_rating)
+![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Tyg-g_mini-rule-engine&metric=sqale_rating)
 
 [![Post a Feature Reuquest](https://img.shields.io/badge/Feature_Requests_Welcome_%3e-D19B00)](https://github.com/Tyg-g/mini-rule-engine/issues/new/choose)
 
@@ -35,8 +42,8 @@ import RuleEngine from 'mini-rule-engine';
 // The getter function can be async (eg. read from a DB)
 
 const re = new RuleEngine();
-re.defineParameter('user', async () => {age: 25, country: 'Mars Colony'}, isPremium: true);
-re.defineParameter('orderCount', async () => 4);
+re.defineParameterAccessor('user', async () => {age: 25, country: 'Mars Colony'}, isPremium: true);
+re.defineParameterAccessor('orderCount', async () => 4);
 
 // 2. Use the engine instance
 
@@ -163,3 +170,10 @@ The evaluation only throws, if it cannot be completed with a meaningful result.
 - `'RETypeError'`: This error is thrown, if a parameter is evaluated to a data type, that cannot be accepted.
 
 Note: Comparing different primitive values (e.g. number and string) will not throw, it will simply return false.
+
+## ![](https://cdn.jsdelivr.net/npm/@tabler/icons/icons/bug.svg) Issues / New Features ![](https://cdn.jsdelivr.net/npm/@tabler/icons/icons/timeline-event-plus.svg)
+
+<img height="18" src="https://cdn.jsdelivr.net/npm/@tabler/icons/icons/texture.svg" />
+Go to [**Issue Reporting on mini-rule-engine**](https://github.com/Tyg-g/mini-rule-engine/issues/new/choose)
+
+*All contributions, ideas and encouragements are welcome!*
