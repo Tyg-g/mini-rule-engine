@@ -83,7 +83,12 @@ if [[ "$CHANGELOG_VERSION" != "$VERSION" ]]; then
   exit 1
 fi
 
-# Optional: ensure date looks valid (YYYY-MM-DD is already checked above)
+# Ensure the changelog date is today's date
+TODAY=$(date +%F)
+if [[ "$CHANGELOG_DATE" != "$TODAY" ]]; then
+  echo "✖ CHANGELOG date ($CHANGELOG_DATE) does not match today's date ($TODAY)." >&2
+  exit 1
+fi
 
 # 3) Create tag vVERSION (fail if exists) -------------------------------------
 
