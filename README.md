@@ -29,7 +29,7 @@ I welcome feature requests and suggestions for use cases I might not have consid
 ## 0. Installation
 
 ```sh
-npm i mini-rule-engine
+$ npm i mini-rule-engine
 ```
 
 ## 1. Basic Usage
