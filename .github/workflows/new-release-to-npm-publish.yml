@@ -28,7 +28,7 @@ jobs:
       - run: echo Tree ${{ github.event.workflow_run.head_commit.tree_id }}
 
       - run: npm ci
-      - run: npm run build
+
       - name: Check NPM repo
         run: npm view $(node -p "require('./package.json').name") name version
 
