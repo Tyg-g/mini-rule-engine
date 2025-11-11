@@ -67,7 +67,7 @@ if [[ -z "$FIRST_H2" ]]; then
 fi
 
 # Expect format: "## <version> - <YYYY-MM-DD>"
-if ! [[ "$FIRST_H2" =~ ^##\ ([0-9]+(\.[0-9]+){2}(-[0-9A-Za-z\.-]+)?)\ \-\ ([0-9]{4}-[0-9]{2}-[0-9]{2})$ ]]; then
+if ! [[ "$FIRST_H2" =~ ^##\ \[([0-9]+(\.[0-9]+){2}(-[0-9A-Za-z\.-]+)?)\]\ \-\ ([0-9]{4}-[0-9]{2}-[0-9]{2})$ ]]; then
   echo "✖ CHANGELOG first '## ' line has wrong format." >&2
   echo "  Found:    $FIRST_H2" >&2
   echo "  Expected: ## 1.2.3 - 2025-11-11" >&2
