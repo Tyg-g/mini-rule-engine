@@ -1,0 +1,12 @@
+                                         ◙⛁   Automatic
+                                      ◀        dynamic/DB
+                                     /  /      read
+                                    /  /
+ Evaluate                          /  ▶        of data needed
+ ruleset +                 ┌──────────────┐    for evaluation
+ params (call)  ────────▶  │              │
+                           │  RuleEngine  │
+                           │   instance   │
+(return value) ◀─────────  │              │
+ evaluation                └──────────────┘
+ result

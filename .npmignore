@@ -3,6 +3,7 @@
 .github/
 .gitignore
 node_modules/
+doc/
 tests/
 coverage/
 scripts/

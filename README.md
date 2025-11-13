@@ -152,7 +152,7 @@ Note: The `'OR'` operator in both cases expects an array of objects.
 The logical AND operation is implied when listing different rules in the ruleset. Therefore, no AND operatoror is defined.
 
 
-## 3. Parameter Usage
+## 3. Rule variables (parameters)
 
 ### Data Types
 
@@ -174,15 +174,121 @@ const ruleset = {
 ```
 
 
-## 4. Async
+## 4. Getter Functions
 
-The evaluation is always async. If the getter functions in defineParameterAccessor() are async, the evaluation will resolve immediately.
+The getter functions define *how* to get the correspondingparameter value for an evaluation run.
+
+### Async
+
+The evaluation is always async. If the getter functions defined in defineParameterAccessor() are async, the evaluation will resolve immediately.
 
 For each evaluation:
 
-- Only those getter functions are called, that are referenced in the evaluated ruleset.
+- **Only those** getter functions are called, that are referenced in the evaluated ruleset.
 
-- Each getter function is called only once, regardless of how many times it is referenced in the ruleset. The same value will be reused for each rule.
+- Each getter function is called **only once**, regardless of how many times it is referenced in the ruleset. The same value will be reused for each rule.
+
+### Defining a Getter Function
+
+The getter functions are defined as follows, before running any evaluations:
+
+```javascript
+re.defineParameterAccessor('parameterName', getterFunction);
+```
+
+### Function parameters
+
+```javascript
+async function getterFunction(params, meta) {...}
+```
+
+- `meta`: An object containing information about the how is the parameter used in the ruleset. This can be useful for example to limit database reads when counting objects.
+
+    - `meta.accessorName` (string): The name of the parameter (defined in `defineParameterAccessor()`) for which the getter was called.<br>*In the case the getter returns an object, and the ruleset evaluates an object parameter, this string contains the part before the first dot.*
+
+    - `meta.constraintValues` (array of any): All the values (operands) the parameter is being compared against in the ruleset.
+
+    - `meta.childrenConstraintValues` (object): *Only if the parameter is accesing an object's children (eg.: `'myObject.childA'`).*<br>The keys list all the descendants that are being accessed in the ruleset. Each key contains an array of the corresponding constraint values (as in `meta.constraintValues`).
+
+- `params`: Is a value or an object, that is passed directly from the `re.evaluate()` or `re.evaluateWithReason()` functions (the `getterParams` parameter):
+```javascript
+async evaluateWithReason(parameterConstraintsObject, getterParams) {}
+```
+This can contain for example a userId.
+
+### Example
+
+**Setup**
+
+```javascript
+const re = new RuleEngine();
+
+re.defineParameterAccessor('user', userGetter);
+re.defineParameterAccessor('orderCount', orderCountGetter);
+re.defineParameterAccessor('currentOrder', currentOrderGetter);
+
+const ruleset = {
+  'user.age': {
+    min: 18,
+    max: 65
+  },
+  'user.eyes.left': { not: 'red' },
+  OR: [
+    {
+      'user.eyes.left': { is: 'black' },
+      'user.age': { max: 22 }
+    },
+    {
+      'user.eyes.left': { not: 'black' }
+    }
+  ],
+  'orderCount': {
+    min: 1
+  }
+};
+
+const getterParams = {
+  userId: 'rxzUyV7qc5',
+  currentOrderId: 'mDyNy3ZmnR7g'
+}
+
+const result = await re.evaluateWithReason(ruleset, getterParams);
+```
+
+**The getter functions are called with the following parameters**
+
+- **`async function userGetter(params, meta) {...}`:**
+
+```javascript
+params = {
+  userId: 'rxzUyV7qc5',
+  currentOrderId: 'mDyNy3ZmnR7g'
+}
+
+meta = {
+  accessorName: 'user',
+  constraintValues: [],
+  childrenConstraintValues: {
+    'age': [18, 65, 22],
+    'eyes.left': ['red', 'black']
+  }
+}
+```
+
+- **`async function orderCountGetter(params, meta) {...}`:**
+
+```javascript
+params //is the same
+
+meta = {
+  accessorName: 'orderCount',
+  constraintValues: [1]
+}
+```
+
+- **`async function currentOrderGetter(params, meta) {...}`:**
+
+*is not called.*
 
 
 ## 5. Errors
@@ -191,18 +297,18 @@ For each evaluation:
 
 - `'REParameterError'`: If the parameter definition encounters a mistake/error in its inputs, it throws.
 
-### Evaluation Errors
+### Errors During Evaluation
 
 The evaluation only throws, if it cannot be completed with a meaningful result.
 
-- `'RERuleSyntaxError'`: This error is thrown, if the ruleset object contains an error.
+- `'RERuleSyntaxError'`: This error is thrown, if the ruleset object contains an error. (Eg. an invalid operator)
 
-- `'RETypeError'`: This error is thrown, if a parameter is evaluated to a data type, that cannot be accepted.
+- `'RETypeError'`: This error is thrown, if a parameter is evaluated to a data type, that cannot be accepted. (Ie. the getter function's return value is incompatible with the given rule, eg. primitive vs. object.)
 
-Note: Comparing different primitive values (e.g. number and string) will not throw, it will simply return false.
+Note: Comparing different primitive values (e.g. number and string) will not throw, it will simply return false, per JS's strict equality comparison.
 
 ## 6. ![](https://cdn.jsdelivr.net/npm/@tabler/icons/icons/bug.svg) Issues / New Features ![](https://cdn.jsdelivr.net/npm/@tabler/icons/icons/timeline-event-plus.svg)
 
-<img height="16" src="https://cdn.jsdelivr.net/npm/@tabler/icons/icons/texture.svg"> Go to [**Issue Reporting on mini-rule-engine ➜**](https://github.com/Tyg-g/mini-rule-engine/issues/new/choose)
+<img height="16" src="https://cdn.jsdelivr.net/npm/@tabler/icons/icons/texture.svg">&nbsp;Go to [**Issue Reporting on mini-rule-engine ➜**](https://github.com/Tyg-g/mini-rule-engine/issues/new/choose)
 
 > *All contributions, ideas and encouragements are welcome!*
