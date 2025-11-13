@@ -15,5 +15,12 @@
     "show_parameter_hints": false,
     "show_other_hints": false,
     "show_background": false
+  },
+  "languages": {
+    "Markdown": {
+      "format_on_save": "off",
+      "auto_indent": false,
+      "auto_indent_on_paste": false
+    }
   }
 }
